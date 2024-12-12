@@ -1,0 +1,175 @@
+.health-calendar-view {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.view-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.view-controls button {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-controls button:hover {
+    background: #f5f5f5;
+}
+
+.current-period {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.calendar-grid {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.weekday-headers {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.weekday {
+    padding: 12px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.calendar-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-date {
+    min-height: 100px;
+    padding: 10px;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    transition: background-color 0.2s ease;
+}
+
+.calendar-date:hover {
+    background-color: #f8f9fa;
+}
+
+.calendar-date.other-month {
+    background: #f8f9fa;
+    color: #aaa;
+}
+
+.calendar-date.selected {
+    background: #e6f3ff;
+}
+
+.calendar-date.has-entries {
+    cursor: pointer;
+}
+
+.date-number {
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.schedule-indicator {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 6px;
+    height: 6px;
+    background: #007bff;
+    border-radius: 50%;
+}
+
+.schedule-tooltip {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    top: calc(100% - 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 12px;
+    min-width: 250px;
+    max-width: 350px;
+}
+
+.calendar-date:hover .schedule-tooltip {
+    display: block;
+}
+
+.tooltip-entry {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.tooltip-entry:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.entry-time {
+    font-weight: 500;
+    color: #007bff;
+    font-size: 0.9em;
+    margin-bottom: 4px;
+}
+
+.entry-instructions {
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #333;
+}
+
+.schedule-details {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.no-entries {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+.schedule-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.schedule-entry {
+    padding: 15px;
+    border-radius: 4px;
+    background: #f8f9fa;
+    border-left: 3px solid #007bff;
+}

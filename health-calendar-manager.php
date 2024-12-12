@@ -14,7 +14,7 @@ function health_calendar_activate() {
     global $wpdb;
     $charset_collate = $wpdb->get_charset_collate();
     
-    // Table for storing schedule entries
+    // Existing table
     $sql = "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}health_schedule (
         id bigint(20) NOT NULL AUTO_INCREMENT,
         calendar_id bigint(20) NOT NULL,
@@ -22,11 +22,24 @@ function health_calendar_activate() {
         schedule_time time,
         instructions text NOT NULL,
         created_at datetime DEFAULT CURRENT_TIMESTAMP,
+        is_holiday BOOLEAN DEFAULT FALSE,
+        message_type VARCHAR(50) DEFAULT 'regular',
         PRIMARY KEY  (id),
         KEY calendar_id (calendar_id),
         KEY schedule_date (schedule_date)
     ) $charset_collate;";
     
+    // New table for yearly themes
+    $sql .= "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}health_calendar_themes (
+        id bigint(20) NOT NULL AUTO_INCREMENT,
+        calendar_id bigint(20) NOT NULL,
+        year int(4) NOT NULL,
+        theme_title varchar(255) NOT NULL,
+        theme_image varchar(255),
+        PRIMARY KEY  (id),
+        KEY calendar_id (calendar_id)
+    ) $charset_collate;";
+
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
     dbDelta($sql);
 }
